@@ -64,6 +64,7 @@ function Login() {
           Sale. Please see our Privacy Notice, our Cookies Notice and our
           Interes-Based Ads Notice.
         </p>
+        
         <button onClick={register} className="login__registerButton">
           Create your Amazon Account
         </button>

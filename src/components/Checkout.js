@@ -1,10 +1,33 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Checkout.css";
 import Subtotal from "./Subtotal";
 import { useStateValue } from "../StateProvider";
 import CheckoutProduct from "./CheckoutProduct";
+import { useHistory } from "react-router-dom";
+
 function Checkout() {
-  const [{ basket }, dispatch] = useStateValue();
+  const history = useHistory();
+  const [{ basket, user }, dispatch] = useStateValue();
+  const emptyBasket = () => {
+    return (
+      <>
+        <h3>Your Amazon Basket is Empty</h3>
+        <a href=""onClick={(e) => history.push("/")} style={{color: '#007185',textDecoration:'none'}} >Continue Shopping</a>
+      </>
+    );
+  };
+  const buildBasket = () => {
+    return basket.map((item) => (
+      <CheckoutProduct
+        id={item.id}
+        title={item.title}
+        image={item.image}
+        price={item.price}
+        rating={item.rating}
+      />
+    ));
+  };
   return (
     <div className="checkout">
       <div className="checkout__left">
@@ -13,16 +36,9 @@ function Checkout() {
           alt=""
           className="checkout__ad"
         />
-        <div>
-          <h2 className="checkout__title">Your Shopping Basket</h2>
-          {basket.map( item => (
-            <CheckoutProduct
-             id={item.id}
-             title = {item.title}
-             image={item.image}
-             price={item.price}
-             rating={item.rating} />
-          ))}
+        <div className="checkout__left__belowImage">
+          <h2 className="checkout__title">Shopping Cart</h2>
+          {basket.length == 0 ? emptyBasket() : buildBasket()}
         </div>
       </div>
       <div className="checkout__right">
