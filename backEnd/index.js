@@ -16,12 +16,13 @@ app.get("/", (request, response) => {
 });
 app.post("/payments/create", async (request, response) => {
     try{
-      const total = request.query.total;
+      const total = Math.ceil(request.query.total);
       console.log("Payment Request Recieved for this amount", total);
       const paymentIntent = await stripe.paymentIntents.create({
         amount: total, // subunits of the currency
         currency: "inr",
       });
+      console.log(paymentIntent);
       response.status(201).send({
         clientSecret: paymentIntent.client_secret,
       });
