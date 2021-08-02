@@ -1,8 +1,12 @@
 .orders{
     padding: 20px 80px;
-
+    background-color: rgb(234,237,237);
 }
 
 .orders > h1{
     margin: 30px 0;
+}
+
+.order__id{
+    border-bottom:1px solid lightgray;
 }

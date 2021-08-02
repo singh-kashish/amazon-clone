@@ -44,6 +44,7 @@ function Home() {
         </div>
         <div className="home__row">
           <Product
+            id={12355876}
             title={"Ikigai: The Japanese secret to a long and happy life"}
             image={
               "https://images-na.ssl-images-amazon.com/images/I/51T8OXMiB5L._SX356_BO1,204,203,200_.jpg"
@@ -52,6 +53,7 @@ function Home() {
             rating={4}
           />
           <Product
+            id={611312312}
             title={"The Alchemist by Paulo Coelho"}
             image={
               "https://images-na.ssl-images-amazon.com/images/I/410llGwMZGL._SX328_BO1,204,203,200_.jpg"
@@ -62,6 +64,7 @@ function Home() {
         </div>
         <div className="home__row">
           <Product
+            id={561651351}
             title={
               "LG 195 cms (77 inches) 4K Ultra HD Smart OLED TV OLED77C9PTA | With Built-in Alexa (Dark Meteo Titanium) (2019 Model)"
             }

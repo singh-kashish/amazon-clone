@@ -7,7 +7,7 @@ import { Link, useHistory } from "react-router-dom";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { getBasketTotal } from "../reducer";
 import CurrencyFormat from "react-currency-format";
-import {db} from '../firebase';
+import { db } from "../firebase";
 
 function Payment() {
   const history = useHistory();
@@ -28,14 +28,14 @@ function Payment() {
       const response = await axios({
         method: "post",
         // stripe expects the total in a currencies subunits
-        url: `payments/create?total=${getBasketTotal( {basket} )*100 }`,
+        url: `payments/create?total=${getBasketTotal({ basket }) * 100}`,
       });
       setClientSecret(response.data.clientSecret);
     };
     getClientSecret();
   }, [basket]);
   console.log("The secret is >>>", clientSecret);
-    console.log("👱", user?.uid);
+  console.log("👱", user?.uid);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -43,21 +43,21 @@ function Payment() {
     const payload = await stripe
       .confirmCardPayment(clientSecret, {
         payment_method: {
-          card: elements.getElement(CardElement)
-        }
+          card: elements.getElement(CardElement),
+        },
       })
       .then(({ paymentIntent }) => {
+        console.log("Payment intents is as>>>>", paymentIntent);
         // paymentIntent = payment Confirmation
-        db
-          .collection('users')
+        db?.collection("users")
           .doc(user?.uid)
-          .collection('orders')
-          .doc(paymentIntent.id)
+          .collection("orders")
+          .doc(paymentIntent?.id)
           .set({
-          basket: basket?basket:null,
-          amount: paymentIntent?.amount,
-          created: paymentIntent?.created
-          })     
+            basket: basket ? basket : null,
+            amount: (paymentIntent?.amount),
+            created: paymentIntent?.created,
+          });
         setSucceeded(true);
         setError(null);
         setProcessing(false);
@@ -66,6 +66,7 @@ function Payment() {
         });
         history.replace("/orders");
       });
+    console.log("Payload is >>> ", payload);
   };
   const handleChange = (event) => {
     // Listen for element in the card element

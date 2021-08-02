@@ -1,8 +1,9 @@
-import db from "./firebase";
+import {db} from "./firebase";
+import React from "react";
 
 const productRef = db.collection("products");
 
-import React from "react";
+
 
 function Database() {
   const handleSubmit = (event) => {

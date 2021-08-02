@@ -10,7 +10,7 @@ import Orders from "./components/Orders";
 import { useStateValue } from "./StateProvider";
 import { auth } from "./firebase";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Database from "./Database";
+// import Database from "./Database";
 
 // stripe
 import { loadStripe } from "@stripe/stripe-js";
