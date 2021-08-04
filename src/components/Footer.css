@@ -1,0 +1,32 @@
+#feet{
+    margin-bottom: 0;
+    padding-bottom: 0;
+    margin-top:15px !important;
+    background-color: #232F3E !important;
+    color: white;
+    width:100%;
+    bottom:0px;
+    z-index:2;
+}
+.footer__logo {
+  margin-top: 0px;
+  margin-bottom: 10px !important;
+  object-fit: contain;
+  width: 100px ;
+  margin-right: auto;
+  margin-left: auto;
+  z-index:0;
+}
+.chiz{
+    color:white;
+    border-right: 1px solid lightblue;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.section__fix{
+    margin-bottom: 12px !important;
+}
+.button__up{
+    margin-top: 5px !important;
+}

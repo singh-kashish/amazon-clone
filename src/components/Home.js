@@ -1,7 +1,51 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Home.css";
 import Product from "./Product";
+import { db } from "../firebase";
+import { useStateValue } from "../StateProvider";
 function Home() {
+  // Scroll Functionality
+  const [intervalId, setIntervalId] = useState(0);
+  const scrollStep = (e) => {
+    console.log(e);
+    if (window.pageYOffset === 0) {
+      clearInterval(intervalId);
+    }
+    window.scroll(0, window.pageYOffset - e.escrollStepInPx);
+  };
+
+  const scrollToTop = (e) => {
+    let intervalId = setInterval(scrollStep(e), e.delayInMs);
+    setIntervalId({ intervalId: intervalId });
+  };
+
+  // If it blows up , starts from here =>  Didn't
+  const [{ products }, dispatch] = useStateValue();
+  const addToProducts = (doc) => {
+    dispatch({
+      type: "ADD_TO_PRODUCTS",
+      item: {
+        id: doc.id,
+        title: doc.data().title,
+        price: doc.data().price,
+        rating: doc.data().rating,
+        url: doc.data().url,
+      },
+    });
+  };
+
+  const fetchProducts = async () => {
+    const citiesRef = db.collection("products");
+    const snapshot = await citiesRef.get();
+    snapshot.forEach((doc) => {
+      addToProducts(doc);
+    });
+  };
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+  // till here
+
   return (
     <div className="home">
       <div className="home__container">
@@ -10,71 +54,114 @@ function Home() {
           src="https://images-eu.ssl-images-amazon.com/images/G/31/prime/Gateway/2021/desktop-1x._CB658860139_.jpg"
           alt=""
         />
+        <div className="home__row">
+          <Product
+            id={products[0]?.id}
+            title={products[0]?.title}
+            image={products[0]?.url}
+            rating={products[0]?.rating}
+            price={products[0]?.price}
+          />
+          <Product
+            id={products[1]?.id}
+            title={products[1]?.title}
+            image={products[1]?.url}
+            rating={products[1]?.rating}
+            price={products[1]?.price}
+          />
+          <Product
+            id={products[2]?.id}
+            title={products[2]?.title}
+            image={products[2]?.url}
+            rating={products[2]?.rating}
+            price={products[2]?.price}
+          />
+        </div>
+        <div className="home__row">
+          <Product
+            id={products[3]?.id}
+            title={products[3]?.title}
+            image={products[3]?.url}
+            rating={products[3]?.rating}
+            price={products[3]?.price}
+          />
+          <Product
+            id={products[4]?.id}
+            title={products[4]?.title}
+            image={products[4]?.url}
+            rating={products[4]?.rating}
+            price={products[4]?.price}
+          />
+        </div>
+        <div className="home__row">
+          <Product
+            id={products[5]?.id}
+            title={products[5]?.title}
+            image={products[5]?.url}
+            rating={products[5]?.rating}
+            price={products[5]?.price}
+          />
+        </div>
+        <div className="home__row">
+          <Product
+            id={products[6]?.id}
+            title={products[6]?.title}
+            image={products[6]?.url}
+            rating={products[6]?.rating}
+            price={products[6]?.price}
+          />
+          <Product
+            id={products[7]?.id}
+            title={products[7]?.title}
+            image={products[7]?.url}
+            rating={products[7]?.rating}
+            price={products[7]?.price}
+          />
+        </div>
+        <div className="home__row">
+          <Product
+            id={products[8]?.id}
+            title={products[8]?.title}
+            image={products[8]?.url}
+            rating={products[8]?.rating}
+            price={products[8]?.price}
+          />
+          <Product
+            id={products[9]?.id}
+            title={products[9]?.title}
+            image={products[9]?.url}
+            rating={products[9]?.rating}
+            price={products[9]?.price}
+          />
+          <Product
+            id={products[10]?.id}
+            title={products[10]?.title}
+            image={products[10]?.url}
+            rating={products[10]?.rating}
+            price={products[10]?.price}
+          />
+        </div>
+        <div className="home__row">
+          <Product
+            id={products[11]?.id}
+            title={products[11]?.title}
+            image={products[11]?.url}
+            rating={products[11]?.rating}
+            price={products[11]?.price}
+          />
+        </div>
 
-        <div className="home__row">
-          <Product
-            id={123456789}
-            title={"Atomic Habits"}
-            image={
-              "https://images-na.ssl-images-amazon.com/images/I/51vSbWpF+dS._AC_SX184_.jpg"
-            }
-            rating={5}
-            price={19.89}
-          />
-          <Product
-            id={123456788}
-            title={
-              "All-new Echo Dot (4th Gen) | #1 smart speaker brand in India with Alexa (Black)"
-            }
-            image={
-              "https://m.media-amazon.com/images/I/61KIy6gX-CL._AC_UY327_FMwebp_QL65_.jpg"
-            }
-            price={39.49}
-            rating={4}
-          />
-          <Product
-            id={123456787}
-            title={"Apple Magic Mouse 2 (Wireless, Rechargable) - Silver"}
-            image={
-              "https://images-na.ssl-images-amazon.com/images/I/4185Yz21AHL._SL1000_.jpg"
-            }
-            price={120.99}
-            rating={3}
-          />
-        </div>
-        <div className="home__row">
-          <Product
-            id={12355876}
-            title={"Ikigai: The Japanese secret to a long and happy life"}
-            image={
-              "https://images-na.ssl-images-amazon.com/images/I/51T8OXMiB5L._SX356_BO1,204,203,200_.jpg"
-            }
-            price={1.99}
-            rating={4}
-          />
-          <Product
-            id={611312312}
-            title={"The Alchemist by Paulo Coelho"}
-            image={
-              "https://images-na.ssl-images-amazon.com/images/I/410llGwMZGL._SX328_BO1,204,203,200_.jpg"
-            }
-            price={2.01}
-            rating={5}
-          />
-        </div>
-        <div className="home__row">
-          <Product
-            id={561651351}
-            title={
-              "LG 195 cms (77 inches) 4K Ultra HD Smart OLED TV OLED77C9PTA | With Built-in Alexa (Dark Meteo Titanium) (2019 Model)"
-            }
-            image={
-              "https://images-na.ssl-images-amazon.com/images/I/81s0JxBkzRL._SL1500_.jpg"
-            }
-            price={10436.48}
-            rating={4}
-          />
-        </div>
+        <button
+          title="Back to top"
+          className="scroll"
+          onClick={(e) => {
+            scrollToTop(e);
+          }}
+          style={{ zIndex: "1", marginTop: "10px" }}
+          className="fluid ui teal button"
+        >
+          Back to Top <i className="chevron up icon"></i>
+        </button>
       </div>
     </div>
   );

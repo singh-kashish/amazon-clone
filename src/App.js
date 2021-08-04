@@ -10,8 +10,8 @@ import Orders from "./components/Orders";
 import { useStateValue } from "./StateProvider";
 import { auth } from "./firebase";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-// import Database from "./Database";
-
+import Database from "./Database";
+import Footer from "./components/Footer";
 // stripe
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
@@ -23,8 +23,6 @@ function App() {
   const [{}, dispatch] = useStateValue();
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
-      console.log("The user is ", authUser);
-
       if (authUser) {
         // user just logged in or was logged in already
         dispatch({
@@ -45,24 +43,36 @@ function App() {
       <div className="app">
         <Switch>
           <Route path="/login">
+            <Header />
             <Login />
+            <Footer />
           </Route>
           <Route path="/checkout">
             <Header />
             <Checkout />
+            <Footer />
+          </Route>
+          <Route path="/product/new">
+            <Header />
+            <Database />
+            <Footer />
           </Route>
           <Route path="/orders">
-            <Orders/>
+            <Header />
+            <Orders />
+            <Footer />
           </Route>
           <Route path="/payment">
             <Header />
             <Elements stripe={promise}>
               <Payment />
             </Elements>
+            <Footer />
           </Route>
           <Route path="/">
             <Header />
             <Home />
+            <Footer />
           </Route>
         </Switch>
       </div>

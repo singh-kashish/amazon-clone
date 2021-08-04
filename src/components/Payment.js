@@ -55,7 +55,7 @@ function Payment() {
           .doc(paymentIntent?.id)
           .set({
             basket: basket ? basket : null,
-            amount: (paymentIntent?.amount),
+            amount: paymentIntent?.amount,
             created: paymentIntent?.created,
           });
         setSucceeded(true);

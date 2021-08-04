@@ -4,16 +4,18 @@ import "./Checkout.css";
 import Subtotal from "./Subtotal";
 import { useStateValue } from "../StateProvider";
 import CheckoutProduct from "./CheckoutProduct";
-import { useHistory } from "react-router-dom";
 
 function Checkout() {
-  const history = useHistory();
   const [{ basket, user }, dispatch] = useStateValue();
   const emptyBasket = () => {
     return (
       <>
         <h3>Your Amazon Basket is Empty</h3>
-        <a href=""onClick={(e) => history.push("/")} style={{color: '#007185',textDecoration:'none'}} >Continue Shopping</a>
+        <Link to="/">
+          <span style={{ color: "#007185", textDecoration: "none" }}>
+            Continue Shopping
+          </span>
+        </Link>
       </>
     );
   };
