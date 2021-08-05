@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+# Amazon Clone
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Landing Page](https://user-images.githubusercontent.com/54403943/128429281-4e98af89-d02b-4013-90f3-f1732ebe47bd.png)
 
-## Available Scripts
+### <a href="https://clone-54ee8.web.app/" target="\_blank" rel="noopener noreferrer">🚀 LIVE HERE ![Firebase](https://img.shields.io/badge/firebase-%23039BE5.svg?style=for-the-badge&logo=firebase)🚀</a>
 
-In the project directory, you can run:
+## Made using ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 
-### `npm start`
+![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
+![NodeJS](https://img.shields.io/badge/node.js-%2343853D.svg?style=for-the-badge&logo=node.js&logoColor=white)
+![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white)![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
+![NPM](https://img.shields.io/badge/NPM-%23000000.svg?style=for-the-badge&logo=npm&logoColor=white)
+![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- This Amazon Clone is made using **React** for Front End hosted with **FireBase**.
+- Data is hosted over **FireStore** and can be added/retrieved.
+- Used **Context API** for Application State Management.
+- Authentication is implemented using **FireBase Authentication** with Google as well as traditional email/password signup/login flow is available for use.
+- I've used **Express** with **NodeJs** to implement a payment gateway using **Stripe** which is hosted over **Heroku**.
+- All the components are available in root -> src -> components
+- "npm start" can be used to run the project on a local server on PORT : 3000
+- This app was made using CREATE-REACT-APP
+- **Features** : Order History , Payment Integration , CheckOut , Add/Remove Products to/from basket , Cart ,etc.
+- BrowserRouter along with UseHistory from React-Router-DOM has been used to enable proper navigation
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+# To run using local server :-
 
-### `npm test`
+## 1. Make sure you have NODE installed!
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Firstly, you will need to download the latest version of Node by <a href="https://nodejs.org/en/download/">CLICKING HERE</a>
 
-### `npm run build`
+## 2. Clone the repo!
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Next, you will need to run the following command in the Terminal to clone the repo onto your machine.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+`git clone https://github.com/singh-kashish/amazon-clone/`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 3. Install Dependancies
 
-### `npm run eject`
+Next, you need to install all the dependancies using:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+`npm install`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Once this is done, you can start the app with:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+`npm start`
